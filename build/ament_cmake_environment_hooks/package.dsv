@@ -1,0 +1,4 @@
+source;share/group4_rwa5/local_setup.bash
+source;share/group4_rwa5/local_setup.dsv
+source;share/group4_rwa5/local_setup.sh
+source;share/group4_rwa5/local_setup.zsh

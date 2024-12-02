@@ -1,0 +1,4 @@
+# ninja log v5
+3	2655	1733115282946201374	CMakeFiles/waypoint_reacher.dir/src/waypoint_reacher.cpp.o	364b694851478856
+3	4909	1733115346087615158	CMakeFiles/waypoint_reacher.dir/src/main.cpp.o	d57311044295ece6
+4909	5392	1733115346576626079	waypoint_reacher	33d5b57aa6060f92

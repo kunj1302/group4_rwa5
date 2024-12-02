@@ -1,0 +1,42 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/ubuntu/Desktop/shreya_ws/install/slam_toolbox/include/**",
+        "/home/ubuntu/shreya_ws/install/slam_toolbox/include/**",
+        "/home/ubuntu/shreya_ws/install/project_1_group_2/include/**",
+        "/home/ubuntu/ros2_ws/install/examples_rclcpp_cbg_executor/include/**",
+        "/home/ubuntu/colcon_ws/install/realsense_gazebo_plugin/include/**",
+        "/home/ubuntu/colcon_ws/install/linkattacher_msgs/include/**",
+        "/home/ubuntu/colcon_ws/install/gazebo_ros2_control/include/**",
+        "/home/ubuntu/colcon_ws/install/ebot_docking/include/**",
+        "/opt/ros/humble/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/bug_algo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture10/first_package/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture11/bot_publisher/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture11/bot_subscriber/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/interface_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/multithreadedexecutor_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/p_controller_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/qos_publisher_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/qos_subscriber_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/quaternion_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/enpm702_fall2024_ros/lecture12/singlethreadedexecutor_demo/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/group2_rwa4/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/group4_rwa5/group4_rwa5/include/**",
+        "/home/ubuntu/Desktop/shreya_ws/src/project1/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

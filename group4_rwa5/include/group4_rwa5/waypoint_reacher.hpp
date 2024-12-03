@@ -4,6 +4,7 @@
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
+#include "bot_waypoint_msgs/msg/bot_waypoint.hpp" // Include custom waypoint message
 
 class WaypointReacher : public rclcpp::Node {
    public:
@@ -17,10 +18,14 @@ class WaypointReacher : public rclcpp::Node {
             "/odom", 10,
             std::bind(&WaypointReacher::odom_callback, this, std::placeholders::_1));
 
+        // Waypoint Subscriber
+        waypoint_subscription_ = this->create_subscription<bot_waypoint_msgs::msg::BotWaypoint>(
+            "/bot_waypoint", 10,
+            std::bind(&WaypointReacher::waypoint_callback, this, std::placeholders::_1));
+
         // Set the goal position and orientation
-        goal_x_ = 2.0;
-        goal_y_ = 2.0;
-        // goal_theta_ = M_PI / 2.0;  // Desired orientation (90 degrees)
+        goal_x_ = 0;
+        goal_y_ = 0;
         goal_theta_ = M_PI / 2.0;  // Desired orientation (90 degrees)
 
         // Controller gains and tolerances
@@ -41,6 +46,15 @@ class WaypointReacher : public rclcpp::Node {
      * @param msg Shared pointer to the incoming odometry message.
      */
     void odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg);
+
+    /**
+     * @brief Callback function to process waypoint messages.
+     *
+     * Updates the goal position and orientation based on the received waypoint message.
+     *
+     * @param msg Shared pointer to the incoming waypoint message.
+     */
+    void waypoint_callback(const bot_waypoint_msgs::msg::BotWaypoint::SharedPtr msg);
 
     /**
      * @brief Executes the control logic for navigating to the goal.
@@ -88,6 +102,14 @@ class WaypointReacher : public rclcpp::Node {
      * position and orientation.
      */
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr odom_subscription_;
+
+    /**
+     * @brief ROS 2 subscription for waypoint updates.
+     *
+     * Subscribes to `bot_waypoint_msgs::msg::BotWaypoint` messages to update
+     * the goal position and orientation of the robot.
+     */
+    rclcpp::Subscription<bot_waypoint_msgs::msg::BotWaypoint>::SharedPtr waypoint_subscription_;
 
     /**
      * @brief Goal parameters for navigation.

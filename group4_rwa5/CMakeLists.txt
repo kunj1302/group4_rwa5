@@ -10,10 +10,10 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(bot_waypoint_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(tf2 REQUIRED)
 find_package(tf2_geometry_msgs REQUIRED)
-# find_package(bot_waypoint_msgs REQUIRED)  # Assuming your custom message package is installed
 
 # Include directories
 include_directories(include)
@@ -24,11 +24,12 @@ ament_target_dependencies(waypoint_reacher
   rclcpp
   geometry_msgs
   nav_msgs
+  bot_waypoint_msgs
   std_msgs
   tf2
   tf2_geometry_msgs
+  
 )
-
 # Install executable
 install(TARGETS waypoint_reacher
   DESTINATION lib/${PROJECT_NAME}

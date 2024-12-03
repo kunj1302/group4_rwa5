@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Site BuildName="(empty)"
-	BuildStamp="20241202-0452-Experimental"
+	BuildStamp="20241203-0017-Experimental"
 	Name="ubuntu-Legion-Pro-5-16IRX8"
 	Generator="ctest-3.22.1"
 	CompilerName="/usr/bin/g++"
@@ -21,14 +21,14 @@
 	TotalVirtualMemory="4585"
 	TotalPhysicalMemory="31894"
 	LogicalProcessorsPerPhysical="1"
-	ProcessorClockFrequency="1368.26"
+	ProcessorClockFrequency="800"
 	>
 	<Testing>
-		<StartDateTime>Dec 02 17:31 EST</StartDateTime>
-		<StartTestTime>1733178718</StartTestTime>
+		<StartDateTime>Dec 02 19:53 EST</StartDateTime>
+		<StartTestTime>1733187183</StartTestTime>
 		<TestList/>
-		<EndDateTime>Dec 02 17:31 EST</EndDateTime>
-		<EndTestTime>1733178718</EndTestTime>
+		<EndDateTime>Dec 02 19:53 EST</EndDateTime>
+		<EndTestTime>1733187183</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

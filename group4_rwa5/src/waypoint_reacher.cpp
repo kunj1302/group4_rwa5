@@ -1,5 +1,14 @@
-#include "rclcpp/rclcpp.hpp"
 #include "group4_rwa5/waypoint_reacher.hpp"
+
+void WaypointReacher::waypoint_callback(const bot_waypoint_msgs::msg::BotWaypoint::SharedPtr msg) {
+    // Update goal with received waypoint
+    goal_x_ = msg->waypoint.x;
+    goal_y_ = msg->waypoint.y;
+    goal_theta_ = msg->waypoint.theta;
+
+    RCLCPP_INFO(this->get_logger(), "New waypoint received: x=%.2f, y=%.2f, theta=%.2f",
+                goal_x_, goal_y_, goal_theta_);
+}
 
 void WaypointReacher::odom_callback(const nav_msgs::msg::Odometry::SharedPtr msg) {
     // Extract current position
@@ -21,25 +30,24 @@ void WaypointReacher::control_loop() {
     double angle_error = normalize_angle(desired_angle - current_theta_);
     double final_orientation_error = normalize_angle(goal_theta_ - current_theta_);
 
-    // Phase 1: Navigate to goal position
+    // Navigate to goal position
     if (distance_error > epsilon_) {
-        // Compute control signals
         double linear_velocity = kp_distance_ * distance_error;
         double angular_velocity = kp_angle_ * angle_error;
 
-        // Publish velocity commands
         publish_velocity(linear_velocity, angular_velocity);
     }
-    // Phase 2: Adjust final orientation
+    // Adjust final orientation
     else if (std::abs(final_orientation_error) > epsilon_theta_) {
-        // Stop linear movement and adjust angular velocity
         double angular_velocity = kp_angle_ * final_orientation_error;
+
         publish_velocity(0.0, angular_velocity);
     }
-    // Goal reached with correct orientation
+    // Goal reached
     else {
         publish_velocity(0.0, 0.0);
-        RCLCPP_INFO(this->get_logger(), "Goal reached with correct orientation!");
+        RCLCPP_INFO(this->get_logger(), "Goal reached: x=%.2f, y=%.2f, theta=%.2f",
+                    goal_x_, goal_y_, goal_theta_);
     }
 }
 
@@ -50,10 +58,9 @@ void WaypointReacher::publish_velocity(double linear, double angular) {
     velocity_publisher_->publish(msg);
 }
 
+
 double WaypointReacher::normalize_angle(double angle) {
-    while (angle > M_PI)
-        angle -= 2.0 * M_PI;
-    while (angle < -M_PI)
-        angle += 2.0 * M_PI;
+    while (angle > M_PI) angle -= 2.0 * M_PI;
+    while (angle < -M_PI) angle += 2.0 * M_PI;
     return angle;
 }
